@@ -45,13 +45,31 @@ struct stepcounterwidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+        VStack(alignment: .leading,spacing:0) {
+            Text("4,790").font(.system(size: 30,weight: .bold).monospaced())
+            Text("Steps").font(.system(size: 20).monospaced()).foregroundStyle(.secondary)
+        Spacer()
+        
+        HStack {
+            Image(systemName:"shoe")
+            Text("176 days!")
+            
+        }.padding(.bottom,5)
+            VStack(spacing:3){
+                HStack(spacing:3){
+                    ForEach(1...5, id: \.self) { _ in
+                        Rectangle().frame(height:5)
+                    }
+                }
+                HStack(spacing:3){
+                    ForEach(1...5, id: \.self) { _ in
+                        Rectangle().frame(height:5)
+                    }
+                }
+                .foregroundStyle(.secondary)
+            }
         }
+        .foregroundStyle(.green)
     }
 }
 
@@ -61,7 +79,7 @@ struct stepcounterwidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             stepcounterwidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.black, for: .widget)
         }
     }
 }
