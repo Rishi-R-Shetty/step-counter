@@ -1,3 +1,2 @@
 # StepCounter
-# step-counter
-# step-counter
+IOS WIDGET FOR STEP TRACKING
